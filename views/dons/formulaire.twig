@@ -1,0 +1,38 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Faire un don</h1>
+
+    {% if errors.length %}
+        <ul>
+            {% for error in errors %}
+                <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" action="/don">
+        <label>Montant (€)</label>
+        <input
+            type="number"
+            step="0.01"
+            min="1"
+            name="montant"
+            value="{{ old.montant|default('') }}"
+            required
+        >
+
+        <label>Type de don</label>
+        <select name="type_don" required>
+            <option value="">-- Choisir --</option>
+            <option value="ponctuel" {{ old.type_don == 'ponctuel' ? 'selected' : '' }}>
+                Ponctuel
+            </option>
+            <option value="recurrent" {{ old.type_don == 'recurrent' ? 'selected' : '' }}>
+                Récurrent
+            </option>
+        </select>
+
+        <button type="submit">Continuer vers le paiement</button>
+    </form>
+{% endblock %}

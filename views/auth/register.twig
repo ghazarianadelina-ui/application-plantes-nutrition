@@ -1,0 +1,29 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Inscription</h1>
+
+    {% if errors.length %}
+        <ul>
+            {% for error in errors %}
+                <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" action="/inscription">
+        <label>Nom</label>
+        <input type="text" name="nom" value="{{ old.nom|default('') }}" required>
+
+        <label>Prénom</label>
+        <input type="text" name="prenom" value="{{ old.prenom|default('') }}" required>
+
+        <label>Email</label>
+        <input type="email" name="email" value="{{ old.email|default('') }}" required>
+
+        <label>Mot de passe</label>
+        <input type="password" name="mot_de_passe" required>
+
+        <button type="submit">Créer un compte</button>
+    </form>
+{% endblock %}

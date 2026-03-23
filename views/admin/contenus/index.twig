@@ -1,0 +1,23 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Gestion des contenus</h1>
+
+    <p><a href="/admin/contenus/create">Ajouter un contenu</a></p>
+
+    {% for contenu in contenus %}
+        <article style="border:1px solid #ddd; padding:1rem; margin-bottom:1rem;">
+            <h2>{{ contenu.titre }}</h2>
+            <p>{{ contenu.rubrique }}</p>
+            <p>{{ contenu.premium ? 'Premium' : 'Gratuit' }}</p>
+
+            <a href="/admin/contenus/{{ contenu.id_contenu }}/edit">Modifier</a>
+
+            <form method="POST" action="/admin/contenus/{{ contenu.id_contenu }}/delete" style="display:inline;">
+                <button type="submit">Supprimer</button>
+            </form>
+        </article>
+    {% else %}
+        <p>Aucun contenu.</p>
+    {% endfor %}
+{% endblock %}

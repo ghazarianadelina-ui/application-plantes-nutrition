@@ -1,0 +1,27 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <article>
+        <h1>{{ contenu.titre }}</h1>
+
+        <p><strong>Rubrique :</strong> {{ contenu.rubrique }}</p>
+        <p>
+            <strong>Type :</strong>
+            {% if contenu.premium %}
+                Premium 🔒
+            {% else %}
+                Gratuit
+            {% endif %}
+        </p>
+
+        <p><strong>Date de publication :</strong> {{ contenu.date_publication|date('d/m/Y H:i') }}</p>
+
+        {% if contenu.path %}
+            <p><strong>Fichier / image :</strong> {{ contenu.path }}</p>
+        {% endif %}
+
+        <div style="margin-top: 1rem;">
+            <p>{{ contenu.description }}</p>
+        </div>
+    </article>
+{% endblock %}

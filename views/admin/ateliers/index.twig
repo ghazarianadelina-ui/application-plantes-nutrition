@@ -1,0 +1,23 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Gestion des ateliers</h1>
+
+    <p><a href="/admin/ateliers/create">Ajouter un atelier</a></p>
+
+    {% for atelier in ateliers %}
+        <article style="border:1px solid #ddd; padding:1rem; margin-bottom:1rem;">
+            <h2>{{ atelier.titre }}</h2>
+            <p>{{ atelier.lieu }}</p>
+            <p>{{ atelier.date_atelier|date('d/m/Y H:i') }}</p>
+
+            <a href="/admin/ateliers/{{ atelier.id_atelier }}/edit">Modifier</a>
+
+            <form method="POST" action="/admin/ateliers/{{ atelier.id_atelier }}/delete" style="display:inline;">
+                <button type="submit">Supprimer</button>
+            </form>
+        </article>
+    {% else %}
+        <p>Aucun atelier.</p>
+    {% endfor %}
+{% endblock %}

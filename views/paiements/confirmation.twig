@@ -1,0 +1,27 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Paiement confirmé</h1>
+
+    <p>Votre paiement a bien été enregistré.</p>
+
+    <p><strong>Référence :</strong> {{ paiement.reference_paiement }}</p>
+    <p><strong>Montant :</strong> {{ paiement.montant }} €</p>
+    <p><strong>Statut :</strong> {{ paiement.statut }}</p>
+
+    {% if inscription %}
+        <h2>Atelier</h2>
+        <p><strong>Titre :</strong> {{ inscription.atelier.titre }}</p>
+        <p><strong>Date :</strong> {{ inscription.atelier.date_atelier|date('d/m/Y H:i') }}</p>
+        <p><strong>Lieu :</strong> {{ inscription.atelier.lieu }}</p>
+
+        <p><a href="/mes-inscriptions">Voir mes inscriptions</a></p>
+    {% endif %}
+
+    {% if don %}
+        <h2>Don</h2>
+        <p><strong>Montant :</strong> {{ don.montant }} €</p>
+        <p><strong>Type :</strong> {{ don.type_don }}</p>
+        <p><a href="/profil">Retour à mon profil</a></p>
+    {% endif %}
+{% endblock %}

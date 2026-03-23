@@ -1,0 +1,35 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Ajouter un atelier</h1>
+
+    {% if errors.length %}
+        <ul>
+            {% for error in errors %}
+                <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" action="/admin/ateliers">
+        <label>Titre</label>
+        <input type="text" name="titre" value="{{ old.titre|default('') }}" required>
+
+        <label>Description</label>
+        <textarea name="description" required>{{ old.description|default('') }}</textarea>
+
+        <label>Date</label>
+        <input type="datetime-local" name="date_atelier" value="{{ old.date_atelier|default('') }}" required>
+
+        <label>Lieu</label>
+        <input type="text" name="lieu" value="{{ old.lieu|default('') }}" required>
+
+        <label>Nombre de places</label>
+        <input type="number" name="nombre_places" value="{{ old.nombre_places|default('') }}" required>
+
+        <label>Prix</label>
+        <input type="number" step="0.01" name="prix" value="{{ old.prix|default('') }}" required>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+{% endblock %}

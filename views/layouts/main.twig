@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    {% include 'layouts/header.twig' %}
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+
+    {% include 'layouts/footer.twig' %}
+</body>
+</html>

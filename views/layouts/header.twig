@@ -1,0 +1,22 @@
+<header>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/contenus">Contenus</a>
+        <a href="/ateliers">Ateliers</a>
+        <a href="/abonnement">Abonnement</a>
+        <a href="/don">Don</a>
+
+        {% if currentUser %}
+            <a href="/profil">Mon profil</a>
+
+            {% if currentUser.role == 'admin' %}
+                <a href="/admin">Admin</a>
+            {% endif %}
+
+            <a href="/deconnexion">Déconnexion</a>
+        {% else %}
+            <a href="/connexion">Connexion</a>
+            <a href="/inscription">Inscription</a>
+        {% endif %}
+    </nav>
+</header>

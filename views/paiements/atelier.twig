@@ -1,0 +1,37 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Paiement de l’atelier</h1>
+
+    <h2>{{ inscription.atelier.titre }}</h2>
+    <p><strong>Lieu :</strong> {{ inscription.atelier.lieu }}</p>
+    <p><strong>Date :</strong> {{ inscription.atelier.date_atelier|date('d/m/Y H:i') }}</p>
+    <p><strong>Prix :</strong> {{ inscription.atelier.prix }} €</p>
+    <p><strong>Statut inscription :</strong> {{ inscription.statut }}</p>
+
+    {% if errors.length %}
+        <ul>
+            {% for error in errors %}
+                <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" action="/paiement/atelier/{{ inscription.id_inscription }}">
+        <p>Simulation de paiement :</p>
+
+        <label>Nom sur la carte</label>
+        <input type="text" name="nom_carte" required>
+
+        <label>Numéro de carte</label>
+        <input type="text" name="numero_carte" required>
+
+        <label>Date d’expiration</label>
+        <input type="text" name="expiration" placeholder="MM/AA" required>
+
+        <label>Cryptogramme</label>
+        <input type="text" name="cvv" required>
+
+        <button type="submit">Payer</button>
+    </form>
+{% endblock %}

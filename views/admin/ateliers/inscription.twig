@@ -1,0 +1,22 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Inscription à l’atelier</h1>
+
+    <h2>{{ atelier.titre }}</h2>
+    <p><strong>Lieu :</strong> {{ atelier.lieu }}</p>
+    <p><strong>Date :</strong> {{ atelier.date_atelier|date('d/m/Y H:i') }}</p>
+    <p><strong>Prix :</strong> {{ atelier.prix }} €</p>
+
+    {% if errors.length %}
+        <ul>
+            {% for error in errors %}
+                <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" action="/ateliers/{{ atelier.id_atelier }}/inscription">
+        <button type="submit">Valider l’inscription</button>
+    </form>
+{% endblock %}

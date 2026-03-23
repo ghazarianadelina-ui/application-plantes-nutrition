@@ -1,0 +1,27 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Modifier un atelier</h1>
+
+    <form method="POST" action="/admin/ateliers/{{ atelier.id_atelier }}/update">
+        <label>Titre</label>
+        <input type="text" name="titre" value="{{ atelier.titre }}" required>
+
+        <label>Description</label>
+        <textarea name="description" required>{{ atelier.description }}</textarea>
+
+        <label>Date</label>
+        <input type="datetime-local" name="date_atelier" value="{{ atelier.date_atelier|date('Y-m-d\\TH:i') }}" required>
+
+        <label>Lieu</label>
+        <input type="text" name="lieu" value="{{ atelier.lieu }}" required>
+
+        <label>Nombre de places</label>
+        <input type="number" name="nombre_places" value="{{ atelier.nombre_places }}" required>
+
+        <label>Prix</label>
+        <input type="number" step="0.01" name="prix" value="{{ atelier.prix }}" required>
+
+        <button type="submit">Mettre à jour</button>
+    </form>
+{% endblock %}

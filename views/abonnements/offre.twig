@@ -1,0 +1,35 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Nos abonnements</h1>
+
+    {% if errors is defined %}
+        <ul>
+            {% for error in errors %}
+                <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div style="display:flex; gap:2rem;">
+
+        <div style="border:1px solid #ddd; padding:1rem;">
+            <h2>Mensuel</h2>
+            <p>9.99 € / mois</p>
+            <form method="POST" action="/abonnement">
+                <input type="hidden" name="type_formule" value="mensuel">
+                <button>S’abonner</button>
+            </form>
+        </div>
+
+        <div style="border:1px solid #ddd; padding:1rem;">
+            <h2>Annuel</h2>
+            <p>99.99 € / an</p>
+            <form method="POST" action="/abonnement">
+                <input type="hidden" name="type_formule" value="annuel">
+                <button>S’abonner</button>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Paiement abonnement</h1>
+
+    <p><strong>Formule :</strong> {{ abonnement.type_formule }}</p>
+    <p><strong>Prix :</strong> {{ abonnement.prix }} €</p>
+
+    <form method="POST" action="/paiement/abonnement/{{ abonnement.id_abonnement }}">
+        <button type="submit">Payer</button>
+    </form>
+{% endblock %}

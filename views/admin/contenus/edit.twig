@@ -1,0 +1,26 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Modifier un contenu</h1>
+
+    <form method="POST" action="/admin/contenus/{{ contenu.id_contenu }}/update">
+        <label>Titre</label>
+        <input type="text" name="titre" value="{{ contenu.titre }}" required>
+
+        <label>Description</label>
+        <textarea name="description" required>{{ contenu.description }}</textarea>
+
+        <label>Rubrique</label>
+        <input type="text" name="rubrique" value="{{ contenu.rubrique }}" required>
+
+        <label>Chemin fichier / image</label>
+        <input type="text" name="path" value="{{ contenu.path }}">
+
+        <label>
+            <input type="checkbox" name="premium" {{ contenu.premium ? 'checked' : '' }}>
+            Premium
+        </label>
+
+        <button type="submit">Mettre à jour</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Ateliers</h1>
+
+    {% for atelier in ateliers %}
+        <article>
+            <h2><a href="/ateliers/{{ atelier.id_atelier }}">{{ atelier.titre }}</a></h2>
+            <p>{{ atelier.lieu }}</p>
+            <p>{{ atelier.date_atelier|date('d/m/Y H:i') }}</p>
+            <p><strong>Prix :</strong> {{ atelier.prix }} €</p>
+        </article>
+    {% else %}
+        <p>Aucun atelier disponible.</p>
+    {% endfor %}
+{% endblock %}

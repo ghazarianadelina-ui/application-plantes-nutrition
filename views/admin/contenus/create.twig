@@ -1,0 +1,34 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Ajouter un contenu</h1>
+
+    {% if errors.length %}
+        <ul>
+            {% for error in errors %}
+                <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" action="/admin/contenus">
+        <label>Titre</label>
+        <input type="text" name="titre" value="{{ old.titre|default('') }}" required>
+
+        <label>Description</label>
+        <textarea name="description" required>{{ old.description|default('') }}</textarea>
+
+        <label>Rubrique</label>
+        <input type="text" name="rubrique" value="{{ old.rubrique|default('') }}" required>
+
+        <label>Chemin fichier / image</label>
+        <input type="text" name="path" value="{{ old.path|default('') }}">
+
+        <label>
+            <input type="checkbox" name="premium" {{ old.premium ? 'checked' : '' }}>
+            Premium
+        </label>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+{% endblock %}

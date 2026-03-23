@@ -1,0 +1,17 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Dashboard Administrateur</h1>
+
+    <ul>
+        <li>Total contenus : {{ stats.totalContenus }}</li>
+        <li>Total ateliers : {{ stats.totalAteliers }}</li>
+        <li>Total utilisateurs : {{ stats.totalUtilisateurs }}</li>
+        <li>Total paiements : {{ stats.totalPaiements }}</li>
+    </ul>
+
+    <p><a href="/admin/contenus">Gérer les contenus</a></p>
+    <p><a href="/admin/ateliers">Gérer les ateliers</a></p>
+    <p><a href="/admin/utilisateurs">Voir les utilisateurs</a></p>
+    <p><a href="/admin/paiements">Voir les paiements</a></p>
+{% endblock %}

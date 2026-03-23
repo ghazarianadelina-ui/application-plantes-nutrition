@@ -1,0 +1,23 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <article>
+        <h1>{{ atelier.titre }}</h1>
+
+        <p>{{ atelier.description }}</p>
+        <p><strong>Lieu :</strong> {{ atelier.lieu }}</p>
+        <p><strong>Date :</strong> {{ atelier.date_atelier|date('d/m/Y H:i') }}</p>
+        <p><strong>Nombre de places :</strong> {{ atelier.nombre_places }}</p>
+        <p><strong>Prix :</strong> {{ atelier.prix }} €</p>
+
+        {% if currentUser %}
+            <p>
+                <a href="/ateliers/{{ atelier.id_atelier }}/inscription">S’inscrire</a>
+            </p>
+        {% else %}
+            <p>
+                <a href="/connexion">Connectez-vous pour vous inscrire</a>
+            </p>
+        {% endif %}
+    </article>
+{% endblock %}

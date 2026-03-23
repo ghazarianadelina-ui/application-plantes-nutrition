@@ -1,0 +1,30 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Contenus</h1>
+
+    {% for contenu in contenus %}
+        <article style="border:1px solid #ddd; padding:1rem; margin-bottom:1rem;">
+            <h2>
+                {% if contenu.premium %}
+                    <a href="/contenus/premium/{{ contenu.id_contenu }}">{{ contenu.titre }}</a>
+                {% else %}
+                    <a href="/contenus/{{ contenu.id_contenu }}">{{ contenu.titre }}</a>
+                {% endif %}
+            </h2>
+
+            <p><strong>Rubrique :</strong> {{ contenu.rubrique }}</p>
+            <p>
+                <strong>Accès :</strong>
+                {% if contenu.premium %}
+                    Premium 🔒
+                {% else %}
+                    Gratuit
+                {% endif %}
+            </p>
+            <p>{{ contenu.description|slice(0, 120) }}...</p>
+        </article>
+    {% else %}
+        <p>Aucun contenu disponible.</p>
+    {% endfor %}
+{% endblock %}
