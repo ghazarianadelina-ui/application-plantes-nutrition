@@ -1,17 +1,52 @@
 {% extends 'layouts/main.twig' %}
 
 {% block body %}
+
     <h1>Dashboard Administrateur</h1>
 
-    <ul>
-        <li>Total contenus : {{ stats.totalContenus }}</li>
-        <li>Total ateliers : {{ stats.totalAteliers }}</li>
-        <li>Total utilisateurs : {{ stats.totalUtilisateurs }}</li>
-        <li>Total paiements : {{ stats.totalPaiements }}</li>
-    </ul>
+    <!-- Statistiques -->
+    <section style="margin-bottom:2rem;">
+        <h2>Statistiques</h2>
 
-    <p><a href="/admin/contenus">Gérer les contenus</a></p>
-    <p><a href="/admin/ateliers">Gérer les ateliers</a></p>
-    <p><a href="/admin/utilisateurs">Voir les utilisateurs</a></p>
-    <p><a href="/admin/paiements">Voir les paiements</a></p>
+        <ul>
+            <li><strong>Total contenus :</strong> {{ stats.totalContenus }}</li>
+            <li><strong>Total ateliers :</strong> {{ stats.totalAteliers }}</li>
+            <li><strong>Total utilisateurs :</strong> {{ stats.totalUtilisateurs }}</li>
+            <li><strong>Total paiements :</strong> {{ stats.totalPaiements }}</li>
+        </ul>
+    </section>
+
+    <!-- Navigation Admin -->
+    <section>
+        <h2>Gestion</h2>
+
+        <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:1rem;">
+
+            <div style="border:1px solid #ddd; padding:1rem;">
+                <h3>Contenus</h3>
+                <p>Gérer les contenus du site</p>
+                <a href="/admin/contenus">Voir les contenus</a>
+            </div>
+
+            <div style="border:1px solid #ddd; padding:1rem;">
+                <h3>Ateliers</h3>
+                <p>Gérer les ateliers</p>
+                <a href="/admin/ateliers">Voir les ateliers</a>
+            </div>
+
+            <div style="border:1px solid #ddd; padding:1rem;">
+                <h3>Utilisateurs</h3>
+                <p>Consulter les utilisateurs</p>
+                <a href="/admin/utilisateurs">Voir les utilisateurs</a>
+            </div>
+
+            <div style="border:1px solid #ddd; padding:1rem;">
+                <h3>Paiements</h3>
+                <p>Consulter les paiements</p>
+                <a href="/admin/paiements">Voir les paiements</a>
+            </div>
+
+        </div>
+    </section>
+
 {% endblock %}

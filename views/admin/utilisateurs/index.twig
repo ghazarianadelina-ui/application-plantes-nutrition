@@ -1,0 +1,16 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+
+    {% for utilisateur in utilisateurs %}
+        <article style="border:1px solid #ddd; padding:1rem; margin-bottom:1rem;">
+            <h2>{{ utilisateur.nom }} {{ utilisateur.prenom }}</h2>
+            <p>{{ utilisateur.email }}</p>
+            <p>Rôle : {{ utilisateur.role }}</p>
+            <p>Statut : {{ utilisateur.statut }}</p>
+        </article>
+    {% else %}
+        <p>Aucun utilisateur.</p>
+    {% endfor %}
+{% endblock %}

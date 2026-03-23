@@ -1,0 +1,16 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Liste des paiements</h1>
+
+    {% for paiement in paiements %}
+        <article style="border:1px solid #ddd; padding:1rem; margin-bottom:1rem;">
+            <h2>{{ paiement.reference_paiement }}</h2>
+            <p>Montant : {{ paiement.montant }} €</p>
+            <p>Date : {{ paiement.date_paiement|date('d/m/Y H:i') }}</p>
+            <p>Statut : {{ paiement.statut }}</p>
+        </article>
+    {% else %}
+        <p>Aucun paiement.</p>
+    {% endfor %}
+{% endblock %}

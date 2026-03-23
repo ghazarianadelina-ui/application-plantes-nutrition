@@ -1,5 +1,7 @@
 <header>
-    <nav>
+    <nav style="display:flex; gap:1rem; align-items:center; padding:1rem; background:#f4f4f4;">
+
+        <!-- Liens publics -->
         <a href="/">Accueil</a>
         <a href="/contenus">Contenus</a>
         <a href="/ateliers">Ateliers</a>
@@ -7,16 +9,25 @@
         <a href="/don">Don</a>
 
         {% if currentUser %}
+            <!-- Utilisateur connecté -->
             <a href="/profil">Mon profil</a>
 
+            <!-- ADMIN -->
             {% if currentUser.role == 'admin' %}
-                <a href="/admin">Admin</a>
+                <a href="/admin" style="color:green; font-weight:bold;">Dashboard Admin</a>
+                <a href="/admin/contenus">Contenus</a>
+                <a href="/admin/ateliers">Ateliers</a>
+                <a href="/admin/utilisateurs">Utilisateurs</a>
+                <a href="/admin/paiements">Paiements</a>
             {% endif %}
 
-            <a href="/deconnexion">Déconnexion</a>
+            <a href="/deconnexion" style="color:red;">Déconnexion</a>
+
         {% else %}
+            <!-- Non connecté -->
             <a href="/connexion">Connexion</a>
             <a href="/inscription">Inscription</a>
         {% endif %}
+
     </nav>
 </header>
