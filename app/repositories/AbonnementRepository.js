@@ -19,6 +19,17 @@ class AbonnementRepository {
     });
   }
 
+  async findAllByUtilisateur(id_utilisateur) {
+    return prisma.abonnement.findMany({
+      where: {
+        id_utilisateur
+      },
+      orderBy: {
+        date_debut: 'desc'
+      }
+    });
+  }
+  
   async findById(id_abonnement) {
     return prisma.abonnement.findUnique({
       where: {

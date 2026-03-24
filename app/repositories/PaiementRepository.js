@@ -22,7 +22,14 @@ class PaiementRepository {
       }
     });
   }
-
+ async findByAbonnement(id_abonnement) {
+    return prisma.paiement.findFirst({
+      where: {
+        id_abonnement
+      }
+    });
+  }
+  
   async findByDon(id_don) {
     return prisma.paiement.findFirst({
       where: {

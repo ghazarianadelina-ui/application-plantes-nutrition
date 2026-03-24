@@ -1,0 +1,42 @@
+{% extends 'layouts/main.twig' %}
+
+{% block body %}
+    <h1>Paiement abonnement</h1>
+
+    {% if errors is defined and errors.length %}
+        <ul>
+            {% for error in errors %}
+                <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p><strong>Formule :</strong> {{ abonnement.type_formule }}</p>
+    <p><strong>Prix :</strong> {{ abonnement.prix }} €</p>
+
+    {% if abonnement.date_debut %}
+        <p><strong>Date de début :</strong> {{ abonnement.date_debut|date('d/m/Y H:i') }}</p>
+    {% endif %}
+
+    {% if abonnement.date_fin %}
+        <p><strong>Date de fin :</strong> {{ abonnement.date_fin|date('d/m/Y H:i') }}</p>
+    {% endif %}
+
+    <form method="POST" action="/paiement/abonnement/{{ abonnement.id_abonnement }}">
+        <p>Simulation de paiement :</p>
+
+        <label>Nom sur la carte</label>
+        <input type="text" name="nom_carte" required>
+
+        <label>Numéro de carte</label>
+        <input type="text" name="numero_carte" required>
+
+        <label>Date d’expiration</label>
+        <input type="text" name="expiration" placeholder="MM/AA" required>
+
+        <label>Cryptogramme</label>
+        <input type="text" name="cvv" required>
+
+        <button type="submit">Payer</button>
+    </form>
+{% endblock %}

@@ -18,6 +18,16 @@
         <p><a href="/mes-inscriptions">Voir mes inscriptions</a></p>
     {% endif %}
 
+    {% if abonnement %}
+        <h2>Abonnement</h2>
+        <p><strong>Formule :</strong> {{ abonnement.type_formule }}</p>
+        <p><strong>Date de début :</strong> {{ abonnement.date_debut|date('d/m/Y H:i') }}</p>
+        {% if abonnement.date_fin %}
+            <p><strong>Date de fin :</strong> {{ abonnement.date_fin|date('d/m/Y H:i') }}</p>
+        {% endif %}
+        <p><a href="/mes-abonnements">Voir mes abonnements</a></p>
+    {% endif %}
+
     {% if don %}
         <h2>Don</h2>
         <p><strong>Montant :</strong> {{ don.montant }} €</p>
